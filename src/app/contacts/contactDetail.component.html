@@ -1,0 +1,32 @@
+<br>
+<div align="center">
+  <h1>Welcome to {{title}}</h1>
+</div>
+<br>
+<br>
+<div *ngIf="contact" align="center">
+  <table align="middle" class="mat-elevation-z8" style ="padding:20px; margin:20px;" cellspacing=10>
+    <tr>
+      <td><b>FIRST NAME :</b></td>
+      <td>{{contact.firstName}}</td>
+    </tr>
+    <tr>
+      <td><b>LAST NAME :</b></td>
+      <td>{{contact.lastName}}</td>
+    </tr>
+    <tr>
+      <td><b>EMAIL :</b></td>
+      <td>{{contact.email}}</td>
+    </tr>
+    <tr>
+      <td><b>PHONE NUMBER :</b></td>
+      <td>{{contact.phoneNumber}}</td>
+    </tr>
+    <tr>
+      <td><b>STATUS :</b></td>
+      <td>{{contact.status}}</td>
+    </tr>
+  </table>
+  <br>
+  <button mat-stroked-button color="warn" onclick="window.history.back()">Back</button>
+</div>

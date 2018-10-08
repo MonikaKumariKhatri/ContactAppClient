@@ -1,0 +1,75 @@
+<br>
+<div align="center">
+  <h1>Welcome to {{title}}</h1>
+</div>
+<br>
+<br>
+<form #formRef="ngForm">
+  <div align="center" class="mat-app-background basic-container" class="mat-elevation-z8">
+    <br>
+      <table align="middle" class="mat-elevation-z8" style ="padding:20px; margin:20px;" cellspacing=10>
+        <tr>
+          <td><b>FIRST NAME :</b></td>
+          <td><input type="text" [(ngModel)]="newContact.firstName" name="firstName" #firstNameRef='ngModel' required minlength=3></td>
+          <div *ngIf="firstNameRef.invalid && (firstNameRef.dirty || firstNameRef.touched)">
+              <div *ngIf="firstNameRef.errors.required">
+                *
+              </div>
+            </div>
+        </tr>
+        <tr><td></td><td>
+          <div *ngIf="firstNameRef.invalid && (firstNameRef.dirty || firstNameRef.touched)">
+              <div *ngIf="firstNameRef.errors.minlength" style="color:red">
+                First Name must be at least 3 characters long.
+              </div>
+          </div>
+        </td></tr>
+        <tr>
+          <td><b>LAST NAME :</b></td>
+          <td><input type="text" [(ngModel)] = "newContact.lastName" name="lastName" #lastNameRef='ngModel' required></td>
+          <div *ngIf="lastNameRef.invalid && (lastNameRef.dirty || lastNameRef.touched)">
+    		      <div *ngIf="lastNameRef.errors.required">
+                *
+              </div>
+    		  </div>
+        </tr>
+        <tr>
+          <td><b>EMAIL :</b></td>
+          <td><input type="email" [(ngModel)] = "newContact.email" name="email" #emailRef='ngModel' required email></td>
+          <div *ngIf="emailRef.invalid && (emailRef.dirty || emailRef.touched)">
+              <div *ngIf="emailRef.errors.required">
+                *
+              </div>
+            </div>
+        </tr>
+        <tr>
+          <td><b>PHONE NUMBER :</b></td>
+          <td><input type="number" [(ngModel)] = "newContact.phoneNumber" name="phoneNumber" #phoneNumberRef='ngModel' required minlength=10 maxlength=15></td>
+          <div *ngIf="phoneNumberRef.invalid && (phoneNumberRef.dirty || phoneNumberRef.touched)">
+              <div *ngIf="phoneNumberRef.errors.required">
+                *
+              </div>
+            </div>
+        </tr>
+        <tr><td></td><td>
+          <div *ngIf="phoneNumberRef.invalid && (phoneNumberRef.dirty || phoneNumberRef.touched)">
+              <div *ngIf="phoneNumberRef.errors.minlength" style="color:red">
+                Phone Number must be 10-15 characters long.
+              </div>
+          </div>
+        </td></tr>
+        <tr>
+          <td><b>STATUS :</b></td>
+          <td>
+            <select value="{{newContact.status}}" [(ngModel)]= "newContact.status" name="status">
+              <option *ngFor="let st of status" value="{{st}}">{{st}}</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    <br>
+    <button mat-raised-button [disabled]="formRef.invalid" color="warn" (click)="addContact(formRef.value)">Add New Contact</button>&nbsp;
+    <button mat-raised-button onclick="window.history.back()">Cancel</button>
+    <!--<input type="Submit" mat-raised-button value="Add Contact" [disabled]="formRef.invalid">-->
+</div>
+</form>

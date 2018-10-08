@@ -1,0 +1,42 @@
+<br>
+<div align="center">
+  <h1>Welcome to {{title}}</h1>
+</div>
+<br>
+<br>
+<form #formRef="ngForm">
+<div align="center" class="mat-app-background basic-container">
+  <br><br>
+    <table align="middle" *ngIf="contact" class="mat-elevation-z8" style ="padding:20px; margin:20px;" cellspacing=10>
+      <tr>
+        <td><b>FIRST NAME :</b></td>
+        <td><input type="text" value="{{contact.firstName}}" [(ngModel)] = "contact.firstName" name="firstName" required></td>
+      </tr>
+      <tr>
+        <td><b>LAST NAME :</b></td>
+        <td><input type="text" value="{{contact.lastName}}" [(ngModel)] = "contact.lastName" name="lastName" required></td>
+      </tr>
+      <tr>
+        <td><b>EMAIL :</b></td>
+        <td><input type="email" value="{{contact.email}}" [(ngModel)] = "contact.email" name="email" required></td>
+      </tr>
+      <tr>
+        <td><b>PHONE NUMBER :</b></td>
+        <td><input type="number" value="{{contact.phoneNumber}}" [(ngModel)] = "contact.phoneNumber" name="phoneNumber" required></td>
+      </tr>
+      <tr>
+        <td><b>STATUS :</b></td>
+        <td>
+          <select value="{{contact.status}}" [(ngModel)] = "contact.status" name="status">
+            <option *ngFor="let st of status" value="{{st}}">{{st}}</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <button mat-raised-button [disabled]="formRef.invalid" color="warn" (click)="UpdateContact(formRef.value)">Update Contact</button>&nbsp;
+    <button mat-raised-button onclick="window.history.back()">Cancel</button>
+    <br>
+    <br>
+</div>
+</form>
